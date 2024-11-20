@@ -1,0 +1,7 @@
+<ul>
+    {% for sun in data %}
+
+    <li>{{ sun.hours.date }} : {{ sun.hours.sunrise }} - {{ sun.hours.sunset }}</li>
+
+    {% endfor %}
+</ul>

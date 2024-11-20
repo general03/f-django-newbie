@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from sun.views import suns
+from sun.views import suns, suns_date
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("sun/", suns),
-    path("suns/<str:country>", suns),
     # re_path(r"suns/(?P<country>[A-Z]{1}[a-z]+)$", suns),
+    # path("suns/<str:country>", suns),
+    # path("suns/<str:date>", suns_date), # Impossible car match avec `suns/<str:country>`
+    re_path(r"suns/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})$", suns_date),
 ]
