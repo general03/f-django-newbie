@@ -40,3 +40,6 @@ def suns_date(request, date):
     if request.method == "GET":
         data = Sun.objects.filter(hours__date=datetime.strptime(date, '%Y-%m-%d'))
     return render(request, "sun_date.html", {"data": data})
+
+def health_check(request):
+    return JsonResponse({"status": "ok"})

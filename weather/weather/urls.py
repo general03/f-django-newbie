@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from sun.views import suns, suns_date
+from sun.views import suns, suns_date, health_check
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("health/", health_check),
     path("sun/", suns),
     # re_path(r"suns/(?P<country>[A-Z]{1}[a-z]+)$", suns),
     # path("suns/<str:country>", suns),
