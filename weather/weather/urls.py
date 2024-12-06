@@ -15,8 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+from sun.views import suns, suns_date, health_check
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("health/", health_check),
+    path("sun/", suns),
+    # re_path(r"suns/(?P<country>[A-Z]{1}[a-z]+)$", suns),
+    # path("suns/<str:country>", suns),
+    # path("suns/<str:date>", suns_date), # Impossible car match avec `suns/<str:country>`
+    re_path(r"suns/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})$", suns_date),
 ]
